@@ -1,0 +1,11 @@
+# Local preview output
+server.log
+server.err
+
+# Videos exceed GitHub's normal 100 MB per-file limit.
+# Keep local copies, but host published videos on YouTube, Vimeo, or Cloudflare R2.
+assets/videos/*.mp4
+
+# Local development tools
+MinGit.zip
+.tools/

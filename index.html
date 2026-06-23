@@ -12,16 +12,18 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-  --black:       #090A0C;
-  --dark:        #0E1015;
-  --dark-mid:    #151820;
-  --dark-soft:   #1C2030;
+  --black:       #050706;
+  --dark:        #08120E;
+  --dark-mid:    #0B1A14;
+  --dark-soft:   #10261D;
   --border:      rgba(255,255,255,0.08);
   --white:       #FFFFFF;
-  --off-white:   #E8EAF0;
-  --muted:       #8A90A2;
-  --accent:      #D4A843;       /* Warm gold — aviation & UNCC energy */
-  --accent-dim:  rgba(212,168,67,0.15);
+  --off-white:   #F2F3F1;
+  --muted:       #A8AEA9;
+  --accent:      #00543A;
+  --accent-dim:  rgba(0,84,58,0.18);
+  --gold:        #A3A276;
+  --gold-dim:    rgba(163,162,118,0.14);
   --red:         #C0392B;
 
   --font-display:  'Bebas Neue', sans-serif;
@@ -134,7 +136,7 @@ input, select, button {
   align-items: center;
   gap: 8px;
   background: var(--accent);
-  color: var(--black);
+  color: var(--white);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 13px;
@@ -405,8 +407,9 @@ input, select, button {
 }
 
 .hero-title-accent {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--accent);
+  color: var(--accent);
+  -webkit-text-stroke: 2px var(--white);
+  paint-order: stroke fill;
 }
 
 .hero-subtitle {
@@ -532,10 +535,7 @@ input, select, button {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  display: block;
 }
 
 .about-images {
@@ -600,6 +600,28 @@ input, select, button {
   margin-bottom: 20px;
   font-size: 16px;
   line-height: 1.75;
+}
+
+.about-text.competition-panel {
+  min-height: 540px;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(9,10,12,0.82), rgba(9,10,12,0.25) 55%, rgba(9,10,12,0.5)),
+    url('assets/images/allteams.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.about-text.competition-panel p {
+  color: rgba(255,255,255,0.9);
+  max-width: 900px;
+  text-align: left;
 }
 
 .about-text .text-link {
@@ -711,6 +733,50 @@ input, select, button {
 .programs-layout {
   display: grid;
   gap: 2px;
+}
+
+.aircraft-posters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.aircraft-poster {
+  width: 100%;
+  background: var(--black);
+}
+
+.aircraft-year {
+  padding: 0 24px 20px;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1;
+  text-align: center;
+}
+
+.aircraft-poster img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.aircraft-poster-caption {
+  padding: 18px 24px 0;
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  text-align: center;
+}
+
+.aircraft-video {
+  display: block;
+  width: min(100% - 48px, 1200px);
+  margin: 28px auto 0;
+  background: var(--black);
 }
 
 .program-feature {
@@ -1028,12 +1094,12 @@ input, select, button {
 }
 
 .mem-card:hover {
-  border-color: rgba(200,168,75,0.35);
+  border-color: rgba(0,84,58,0.45);
   transform: translateY(-6px);
 }
 
 .mem-card.featured {
-  background: rgba(200,168,75,0.07);
+  background: rgba(0,84,58,0.12);
   border-color: var(--accent);
 }
 
@@ -1120,6 +1186,41 @@ input, select, button {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 2px;
+}
+
+.vision-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.vision-content img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.vision-content p {
+  margin-top: 28px;
+  color: rgba(232,234,240,0.82);
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.sponsor-recognition {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+}
+
+.sponsor-recognition-image {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sponsor-recognition-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .news-card.featured-news {
@@ -1221,21 +1322,18 @@ input, select, button {
 .contact-bg {
   position: absolute;
   inset: 0;
+  background: transparent;
 }
 
 .contact-bg img {
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
 }
 
 .contact-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(9,10,12,0.97) 0%,
-    rgba(9,10,12,0.92) 60%,
-    rgba(9,10,12,0.85) 100%
-  );
+  background: rgba(9,10,12,0.75);
 }
 
 .contact-inner {
@@ -1280,7 +1378,7 @@ input, select, button {
 
 .form-field input,
 .form-field select {
-  background: rgba(255,255,255,0.05);
+  background: var(--dark-soft);
   border: 1.5px solid var(--border);
   color: var(--white);
   padding: 13px 16px;
@@ -1297,7 +1395,7 @@ input, select, button {
 .form-field input:focus,
 .form-field select:focus {
   border-color: var(--accent);
-  background: rgba(200,168,75,0.05);
+  background: var(--dark-mid);
 }
 
 .submit-btn {
@@ -1432,6 +1530,7 @@ input, select, button {
 
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-images { height: 380px; }
+  .about-text.competition-panel { min-height: 460px; padding: 40px; }
 
   .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
 
@@ -1533,6 +1632,12 @@ input, select, button {
   will-change: opacity, transform;
 }
 
+.hero-slide.aiden-slide {
+  background-color: var(--black);
+  background-size: auto 88%;
+  background-repeat: no-repeat;
+}
+
 .hero-slide.active {
   opacity: 1;
   transform: scale(1.0);
@@ -1602,6 +1707,10 @@ input, select, button {
   gap: 2px;
 }
 
+.sponsor-tiers .sponsor-card:nth-child(1) { order: 1; }
+.sponsor-tiers .sponsor-card:nth-child(2) { order: 3; }
+.sponsor-tiers .sponsor-card:nth-child(3) { order: 2; }
+
 .sponsor-card {
   background: var(--dark-soft);
   padding: 44px 36px;
@@ -1614,20 +1723,20 @@ input, select, button {
 }
 
 .sponsor-card:hover {
-  border-color: rgba(212,168,67,0.35);
+  border-color: rgba(0,84,58,0.45);
   transform: translateY(-6px);
 }
 
 .sponsor-card.featured {
-  background: rgba(212,168,67,0.07);
-  border-color: var(--accent);
+  background: var(--gold-dim);
+  border-color: var(--gold);
 }
 
 .sponsor-badge {
   position: absolute;
   top: -1px; left: 50%;
   transform: translateX(-50%);
-  background: var(--accent);
+  background: var(--gold);
   color: var(--black);
   font-size: 10px;
   font-weight: 700;
@@ -1647,6 +1756,11 @@ input, select, button {
   width: 44px;
   height: 44px;
   color: var(--accent);
+}
+
+.sponsor-card.featured .sponsor-icon,
+.sponsor-card.featured .sponsor-amount {
+  color: var(--gold);
 }
 .sponsor-icon svg { width: 100%; height: 100%; }
 
@@ -1729,6 +1843,20 @@ input, select, button {
   padding-top: 20px;
 }
 
+.current-team-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.current-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .sponsor-tiers { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
@@ -1756,7 +1884,6 @@ input, select, button {
         <a href="#welcome">Welcome</a>
         <a href="#about">About Us</a>
         <a href="#aircraft">Our Aircraft</a>
-        <a href="#design">Design Process</a>
         <a href="#sponsors">Sponsor Us</a>
         <a href="#competition">Competition</a>
         <a href="#contact" class="nav-cta">Join the Team</a>
@@ -1769,7 +1896,6 @@ input, select, button {
       <a href="#welcome">Welcome</a>
       <a href="#about">About Us</a>
       <a href="#aircraft">Our Aircraft</a>
-      <a href="#design">Design Process</a>
       <a href="#sponsors">Sponsor Us</a>
       <a href="#competition">Competition</a>
       <a href="#contact">Join the Team</a>
@@ -1780,11 +1906,14 @@ input, select, button {
   <section id="welcome" class="hero">
     <div class="hero-media">
       <div class="hero-slideshow" id="heroSlideshow">
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=1920&auto=format&fit=crop&q=80')"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&auto=format&fit=crop&q=80')"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1517976487492-5750f3195933?w=1920&auto=format&fit=crop&q=80')"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&auto=format&fit=crop&q=80')"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1487887235947-a955ef187fcc?w=1920&auto=format&fit=crop&q=80')"></div>
+        <div class="hero-slide active" style="background-image: url('assets/images/groupwithbanner.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/nemesistakeoff.jpg')"></div>
+        <div class="hero-slide aiden-slide" style="background-image: url('assets/images/aiden.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/compilation.png')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/overshoulder.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/groupaz.JPG')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/grass.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/mountains.png')"></div>
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-indicators" id="heroIndicators">
@@ -1793,36 +1922,21 @@ input, select, button {
         <button class="hero-indicator" data-index="2" aria-label="Slide 3"></button>
         <button class="hero-indicator" data-index="3" aria-label="Slide 4"></button>
         <button class="hero-indicator" data-index="4" aria-label="Slide 5"></button>
+        <button class="hero-indicator" data-index="5" aria-label="Slide 6"></button>
+        <button class="hero-indicator" data-index="6" aria-label="Slide 7"></button>
+        <button class="hero-indicator" data-index="7" aria-label="Slide 8"></button>
       </div>
     </div>
     <div class="hero-content">
-      <p class="hero-eyebrow">AIAA Design Build Fly &nbsp;·&nbsp; UNC Charlotte &nbsp;·&nbsp; Senior Design Project</p>
       <h1 class="hero-title">WE<br>DESIGN.<br>BUILD.<br><span class="hero-title-accent">FLY.</span></h1>
-      <p class="hero-subtitle">A student-led senior design team at UNC Charlotte competing in the AIAA Design/Build/Fly competition — engineering RC aircraft from concept to competition day.</p>
+      <p class="hero-subtitle">A student-led aircraft design team at The University of North Carolina at Charlotte competing in the AIAA Design/Build/Fly competition — engineering a new RC aircraft from concept to reality every year.</p>
       <div class="hero-actions">
-        <a href="#aircraft" class="btn-primary">See Our Aircraft</a>
-        <a href="#about" class="btn-ghost">Our Story</a>
+        <a href="#about" class="btn-primary">The Competition</a>
       </div>
     </div>
     <div class="hero-scroll">
       <div class="scroll-dot"></div>
       <span>Scroll to explore</span>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="stat-num">[ N ]</span>
-        <span class="stat-lbl">Team Members</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat">
-        <span class="stat-num">[ N ]</span>
-        <span class="stat-lbl">Design Hours Logged</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat">
-        <span class="stat-num">[ N ]</span>
-        <span class="stat-lbl">Flight Tests Completed</span>
-      </div>
     </div>
   </section>
 
@@ -1830,136 +1944,13 @@ input, select, button {
   <section id="about" class="section about-section">
     <div class="container">
       <div class="about-grid">
-        <div class="about-images">
-          <div class="about-img-main">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=80" alt="RC aircraft build — replace with team workshop photo" />
-          </div>
-          <div class="about-img-secondary">
-            <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=400&auto=format&fit=crop&q=80" alt="Aircraft wing — replace with team aircraft detail photo" />
-            <div class="founded-badge">
-              <span class="badge-year">UNCC</span>
-              <span class="badge-label">Charlotte, NC</span>
-            </div>
-          </div>
-        </div>
-        <div class="about-text">
-          <span class="section-label">Who We Are</span>
-          <h2 class="section-heading">Built by Students.<br><em>Flown with Pride.</em></h2>
-          <p>We are a senior design team at UNC Charlotte competing in the AIAA Design/Build/Fly competition — one of the most prestigious undergraduate aerospace engineering challenges in the country.</p>
-          <p>[ Describe your team's background, how long the chapter has been competing, and what makes your approach to RC aircraft design unique. Mention your department, faculty advisors, and the engineering disciplines represented on the team. ]</p>
-          <p>[ Insert your team's mission statement or design philosophy here — what drives your decisions from aerodynamics to structures to propulsion. ]</p>
+        <div class="about-text competition-panel">
+          <h2 class="section-heading"><em>The Competition</em></h2>
+          <p>Every year, more than 145 universities from around the world compete for the top place at the American Institute of Aeronautics and Astronautics Design-Build-Fly competition. The goal is to design, build, and demonstrate the flight capabilities of an electric-powered, remote-controlled airplane that meets rigorous technical and mission requirements involving a commercial or military challenge.</p>
           <a href="#aircraft" class="text-link">See our aircraft →</a>
         </div>
       </div>
 
-      <!-- Team Roster -->
-      <div class="team-roster">
-        <div class="section-header centered" style="margin-top: 80px;">
-          <span class="section-label">The People Behind the Plane</span>
-          <h2 class="section-heading">Meet the Team</h2>
-          <p class="section-subhead">[ One sentence about your team — majors represented, class years, and what brings everyone together. ]</p>
-        </div>
-        <div class="membership-cards">
-
-          <div class="mem-card">
-            <div class="mem-card-top">
-              <span class="mem-tier">Aerodynamics</span>
-            </div>
-            <ul class="mem-perks">
-              <li>Wing design &amp; airfoil selection</li>
-              <li>Lift &amp; drag estimation</li>
-              <li>Stability &amp; control analysis</li>
-              <li>XFLR5 / AVL simulation</li>
-              <li>[ Team member names ]</li>
-            </ul>
-            <a href="#contact" class="btn-outline full-width">Get Involved</a>
-          </div>
-
-          <div class="mem-card featured">
-            <div class="mem-badge">Team Lead</div>
-            <div class="mem-card-top">
-              <span class="mem-tier">Systems &amp; Integration</span>
-            </div>
-            <ul class="mem-perks">
-              <li>Aircraft configuration &amp; layout</li>
-              <li>Weight budget &amp; CG management</li>
-              <li>Systems integration testing</li>
-              <li>Competition strategy &amp; scoring</li>
-              <li>Design report &amp; documentation</li>
-              <li>[ Team member names ]</li>
-            </ul>
-            <a href="#contact" class="btn-primary full-width">Join the Team</a>
-          </div>
-
-          <div class="mem-card">
-            <div class="mem-card-top">
-              <span class="mem-tier">Structures &amp; Build</span>
-            </div>
-            <ul class="mem-perks">
-              <li>Structural design &amp; FEA</li>
-              <li>Fabrication &amp; manufacturing</li>
-              <li>Propulsion &amp; avionics</li>
-              <li>Ground &amp; flight testing</li>
-              <li>[ Team member names ]</li>
-            </ul>
-            <a href="#contact" class="btn-outline full-width">Get Involved</a>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========== THREE PILLARS ========== -->
-  <section class="section pillars-section">
-    <div class="pillars-bg-text">DBF</div>
-    <div class="container">
-      <div class="section-header centered">
-        <span class="section-label">How We Work</span>
-        <h2 class="section-heading">Engineering from<br><em>First Principles</em></h2>
-      </div>
-      <div class="pillars-grid">
-
-        <div class="pillar-card" data-index="01">
-          <div class="pillar-icon-wrap">
-            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="8" y1="48" x2="48" y2="48" stroke="currentColor" stroke-width="2"/>
-              <polyline points="14,48 20,28 28,36 36,16 44,24" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
-              <circle cx="36" cy="16" r="3" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>Design</h3>
-          <p>Every aircraft starts with rigorous analysis — aerodynamic modeling, structural simulation, and weight trade studies to meet AIAA DBF mission requirements before a single part is cut.</p>
-        </div>
-
-        <div class="pillar-card" data-index="02">
-          <div class="pillar-icon-wrap">
-            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="20" width="36" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
-              <path d="M10 28h36" stroke="currentColor" stroke-width="2"/>
-              <path d="M20 20v-6a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="2"/>
-              <circle cx="28" cy="36" r="3" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>Build</h3>
-          <p>Our team fabricates aircraft in the UNC Charlotte machine shop — cutting foam cores, laying composite skins, and assembling custom servo linkages and landing gear by hand.</p>
-        </div>
-
-        <div class="pillar-card" data-index="03">
-          <div class="pillar-icon-wrap">
-            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 32 C10 18, 24 10, 50 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M6 32 L16 28 L20 36 Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
-              <path d="M36 14 L42 8 L46 16 Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
-              <line x1="8" y1="46" x2="48" y2="46" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
-            </svg>
-          </div>
-          <h3>Fly</h3>
-          <p>From maiden flights on campus to competition day, we iterate through flight testing — tuning CG, control surface deflections, and propulsion settings to maximize our mission score.</p>
-        </div>
-
-      </div>
     </div>
   </section>
 
@@ -1970,140 +1961,39 @@ input, select, button {
         <span class="section-label">Current &amp; Past Builds</span>
         <h2 class="section-heading">Our Aircraft</h2>
       </div>
-      <div class="programs-layout">
-
-        <div class="program-feature">
-          <div class="program-feature-img">
-            <img src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?w=900&auto=format&fit=crop&q=80" alt="RC aircraft in flight — replace with your aircraft photo" />
-            <span class="feature-tag">2024–25 Competition Aircraft</span>
-          </div>
-          <div class="program-feature-text">
-            <span class="section-label">This Season</span>
-            <h3>[ Aircraft Name / Designation ]</h3>
-            <p>[ Describe your current competition aircraft — wing configuration, wingspan, estimated AUW, propulsion system (motor, ESC, battery pack), and the mission profile it is optimized for. ]</p>
-            <p>[ Add notable design features: high-lift devices, folding wing mechanism, quick-release payload bay, or structural innovations your team developed this season. ]</p>
-            <a href="#design" class="btn-outline">See Design Process</a>
-          </div>
+      <div class="aircraft-posters">
+        <div class="aircraft-poster">
+          <h3 class="aircraft-year">2026</h3>
+          <img src="assets/images/poster26.jpg" alt="2026 DBF aircraft poster" />
+          <p class="aircraft-poster-caption">Banner-Towing Bush Plane, "The Nemesis"</p>
+          <video class="aircraft-video" controls preload="metadata">
+            <source src="assets/videos/video26.mp4" type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
         </div>
-
-        <div class="programs-cards">
-          <div class="prog-card">
-            <div class="prog-card-img">
-              <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&auto=format&fit=crop&q=80" alt="Previous aircraft — replace with team photo" />
-            </div>
-            <div class="prog-card-body">
-              <span class="prog-tag">[ 20XX–XX Season ]</span>
-              <h4>[ Previous Aircraft Name ]</h4>
-              <p>[ Brief description of a prior season's aircraft, its key design decisions, and competition result. ]</p>
-              <a href="#" class="text-link">View details →</a>
-            </div>
-          </div>
-          <div class="prog-card">
-            <div class="prog-card-img">
-              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=80" alt="Electronics/avionics — replace with team photo" />
-            </div>
-            <div class="prog-card-body">
-              <span class="prog-tag">Systems</span>
-              <h4>Avionics &amp; Propulsion</h4>
-              <p>[ Describe the electronic systems: flight controller, receiver, ESC specs, motor KV rating, and battery chemistry choices made for this aircraft. ]</p>
-              <a href="#" class="text-link">View specs →</a>
-            </div>
-          </div>
-          <div class="prog-card">
-            <div class="prog-card-img">
-              <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=600&auto=format&fit=crop&q=80" alt="CAD model — replace with your CAD screenshot" />
-            </div>
-            <div class="prog-card-body">
-              <span class="prog-tag">Design Tools</span>
-              <h4>CAD &amp; Simulation</h4>
-              <p>[ List the tools your team uses: XFLR5, OpenVSP, SolidWorks, ANSYS, AVL, or custom Python performance estimation scripts. ]</p>
-              <a href="#" class="text-link">View workflow →</a>
-            </div>
-          </div>
+        <div class="aircraft-poster">
+          <h3 class="aircraft-year">2025</h3>
+          <img src="assets/images/poster25.jpg" alt="2025 DBF aircraft poster" />
+          <p class="aircraft-poster-caption">X-1 Flight Test Program</p>
+          <video class="aircraft-video" controls preload="metadata">
+            <source src="assets/videos/video25.mp4" type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========== DESIGN PROCESS ========== -->
-  <section id="design" class="section events-section">
-    <div class="events-hero-bg">
-      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1800&auto=format&fit=crop&q=80" alt="Workshop — replace with team build photos" />
-      <div class="events-overlay"></div>
-    </div>
+  <!-- ========== TEAM ROSTER ========== -->
+  <section class="section about-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label light">From Concept to Runway</span>
-        <h2 class="section-heading light">Our Design<br><em>Process</em></h2>
-      </div>
-      <div class="events-grid">
-
-        <div class="event-card">
-          <div class="event-date-block">
-            <span class="ev-month">PHASE</span>
-            <span class="ev-day">01</span>
-          </div>
-          <div class="event-details">
-            <span class="ev-type">Conceptual Design</span>
-            <h4>Requirements &amp; Sizing</h4>
-            <p>[ Describe how your team interprets AIAA DBF rules, scores missions, and derives top-level requirements — MTOW, wing loading, payload constraints, and ground mission specs. ]</p>
-          </div>
-          <a href="#" class="ev-arrow" aria-label="Learn more">→</a>
+      <div class="team-roster">
+        <div class="section-header centered">
+          <h2 class="section-heading">Meet Your 2026-2027 Team</h2>
         </div>
-
-        <div class="event-card">
-          <div class="event-date-block">
-            <span class="ev-month">PHASE</span>
-            <span class="ev-day">02</span>
-          </div>
-          <div class="event-details">
-            <span class="ev-type">Preliminary Design</span>
-            <h4>Aerodynamics &amp; Structures</h4>
-            <p>[ Describe airfoil selection, wing planform optimization, tail sizing, and structural layout decisions. Mention any CFD or panel-method tools used at this stage. ]</p>
-          </div>
-          <a href="#" class="ev-arrow" aria-label="Learn more">→</a>
+        <div class="current-team-photo">
+          <img src="assets/images/currentteam.png" alt="DBF Charlotte 2026-2027 team" />
         </div>
-
-        <div class="event-card">
-          <div class="event-date-block">
-            <span class="ev-month">PHASE</span>
-            <span class="ev-day">03</span>
-          </div>
-          <div class="event-details">
-            <span class="ev-type">Detailed Design &amp; Fabrication</span>
-            <h4>Build &amp; Integration</h4>
-            <p>[ Describe fabrication methods: foam cutting, fiberglass layup, 3D printed parts, laser-cut ribs, and how sub-systems are integrated and bench-tested before first flight. ]</p>
-          </div>
-          <a href="#" class="ev-arrow" aria-label="Learn more">→</a>
-        </div>
-
-        <div class="event-card">
-          <div class="event-date-block">
-            <span class="ev-month">PHASE</span>
-            <span class="ev-day">04</span>
-          </div>
-          <div class="event-details">
-            <span class="ev-type">Flight Test &amp; Iteration</span>
-            <h4>Testing &amp; Refinement</h4>
-            <p>[ Describe your test program: location, number of planned flights, data collected (airspeed, current draw, lap times), and how results feed back into design changes before competition. ]</p>
-          </div>
-          <a href="#" class="ev-arrow" aria-label="Learn more">→</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== QUOTE ========== -->
-  <section class="section quote-section">
-    <div class="container">
-      <div class="quote-block">
-        <div class="quote-mark">&ldquo;</div>
-        <blockquote>
-          [ Insert a quote from your faculty advisor, team lead, or an AIAA official that captures the spirit of the project — the challenge of designing an aircraft that actually flies under real competition pressure. ]
-        </blockquote>
-        <p class="quote-attribution">— <strong>[ Name ]</strong>, [ Role &amp; Title, UNC Charlotte ]</p>
       </div>
     </div>
   </section>
@@ -2128,7 +2018,7 @@ input, select, button {
               </svg>
             </div>
             <span class="sponsor-tier-label">Bronze</span>
-            <span class="sponsor-amount">[ $ Amount ]</span>
+            <span class="sponsor-amount">$250</span>
           </div>
           <ul class="sponsor-perks">
             <li>Logo on team website</li>
@@ -2148,7 +2038,7 @@ input, select, button {
               </svg>
             </div>
             <span class="sponsor-tier-label">Gold</span>
-            <span class="sponsor-amount">[ $ Amount ]</span>
+            <span class="sponsor-amount">$1000+</span>
           </div>
           <ul class="sponsor-perks">
             <li>Logo on aircraft fuselage</li>
@@ -2170,7 +2060,7 @@ input, select, button {
               </svg>
             </div>
             <span class="sponsor-tier-label">Silver</span>
-            <span class="sponsor-amount">[ $ Amount ]</span>
+            <span class="sponsor-amount">$500</span>
           </div>
           <ul class="sponsor-perks">
             <li>Logo on team banner</li>
@@ -2220,51 +2110,12 @@ input, select, button {
   <!-- ========== COMPETITION ========== -->
   <section id="competition" class="section media-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">AIAA DBF Competition</span>
-        <h2 class="section-heading">Competition &amp;<br><em>Results</em></h2>
+      <div class="section-header centered">
+        <h2 class="section-heading">History &amp; <em>Vision</em></h2>
       </div>
-      <div class="news-grid">
-
-        <div class="news-card featured-news">
-          <div class="news-img">
-            <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=900&auto=format&fit=crop&q=80" alt="Aircraft in flight — replace with competition day photo" />
-          </div>
-          <div class="news-body">
-            <span class="news-tag">[ 20XX–XX Season ]</span>
-            <h3>AIAA Design/Build/Fly — [ Competition Location ]</h3>
-            <p>[ Describe your team's competition result: overall ranking, mission scores, what went well on competition day, and what you'd improve next season. Include date and location. ]</p>
-            <div class="news-meta">
-              <span class="news-date">[ Competition Date ]</span>
-              <a href="https://www.aiaa.org/dbf" class="text-link" target="_blank">AIAA DBF Official Site →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-sidebar">
-          <div class="news-mini">
-            <span class="news-tag">Mission 1</span>
-            <h5>[ Mission 1 Name ] — [ Score / Result Notes ]</h5>
-            <span class="news-date">[ Competition Day ]</span>
-          </div>
-          <div class="news-mini">
-            <span class="news-tag">Mission 2</span>
-            <h5>[ Mission 2 Name ] — [ Score / Result Notes ]</h5>
-            <span class="news-date">[ Competition Day ]</span>
-          </div>
-          <div class="news-mini">
-            <span class="news-tag">Mission 3</span>
-            <h5>[ Mission 3 Name ] — [ Score / Result Notes ]</h5>
-            <span class="news-date">[ Competition Day ]</span>
-          </div>
-          <div class="news-mini">
-            <span class="news-tag">Design Report</span>
-            <h5>Written report submitted to AIAA judges — [ Score / Ranking ]</h5>
-            <span class="news-date">[ Submission Date ]</span>
-          </div>
-          <a href="#" class="btn-outline full-width mt-auto">View Full Report</a>
-        </div>
-
+      <div class="vision-content">
+        <img src="assets/images/vision.jpg" alt="History and vision of Design Build Fly at UNC-Charlotte" />
+        <p>Design Build Fly at UNC-Charlotte launched in 2025 with 5 engineering students. They competed for the first time in Tucson, Arizona by building a model X1-B aircraft. In 2026, the team doubled in size to 10 students, and competed with an all-3D-printed aircraft in Wichita, Kansas, placing 50th out of 98 teams. Building upon the previous successes of the past two teams, Design Build Fly at UNC-Charlotte aims to place in the top 25% of teams in 2027.</p>
       </div>
     </div>
   </section>
@@ -2272,13 +2123,13 @@ input, select, button {
   <!-- ========== CONTACT / CTA ========== -->
   <section id="contact" class="section contact-section">
     <div class="contact-bg">
-      <img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=1800&auto=format&fit=crop&q=80" alt="Aircraft — replace with team runway photo" />
+      <img src="assets/images/equation.png" alt="Aircraft design equation" />
       <div class="contact-overlay"></div>
     </div>
     <div class="container">
       <div class="contact-inner">
         <span class="section-label light">Get Involved</span>
-        <h2 class="section-heading light">Want to Build &amp;<br>Fly with Us?</h2>
+        <h2 class="section-heading light">Want to Design, Build,<br>and Fly with Us?</h2>
         <p class="contact-desc">Whether you're a student interested in joining the team or a sponsor looking to support the next generation of aerospace engineers at UNC Charlotte — we'd love to hear from you.</p>
         <div class="contact-form">
           <div class="form-row">
@@ -2315,6 +2166,18 @@ input, select, button {
     </div>
   </section>
 
+  <!-- ========== SPONSOR RECOGNITION ========== -->
+  <section id="sponsor-recognition" class="section sponsor-recognition">
+    <div class="container">
+      <div class="section-header centered">
+        <h2 class="section-heading">DBF UNC-Charlotte Sponsors</h2>
+      </div>
+      <div class="sponsor-recognition-image">
+        <img src="assets/images/sponsors.png" alt="DBF UNC-Charlotte sponsors" />
+      </div>
+    </div>
+  </section>
+
   <!-- ========== FOOTER ========== -->
   <footer class="site-footer">
     <div class="container">
@@ -2329,7 +2192,6 @@ input, select, button {
           <ul>
             <li><a href="#about">About Us</a></li>
             <li><a href="#aircraft">Our Aircraft</a></li>
-            <li><a href="#design">Design Process</a></li>
             <li><a href="#sponsors">Sponsor Us</a></li>
           </ul>
         </div>
@@ -2369,6 +2231,21 @@ input, select, button {
  * AIAA — American Institute of Aeronautics and Astronautics
  * Main JavaScript
  */
+
+// Keep sponsorship and contact as the final two content sections.
+const sponsorSection = document.getElementById('sponsors');
+const contactSection = document.getElementById('contact');
+const sponsorRecognitionSection = document.getElementById('sponsor-recognition');
+const siteFooter = document.querySelector('.site-footer');
+if (sponsorSection && siteFooter) {
+  siteFooter.before(sponsorSection);
+}
+if (contactSection && siteFooter) {
+  siteFooter.before(contactSection);
+}
+if (sponsorRecognitionSection && siteFooter) {
+  siteFooter.before(sponsorRecognitionSection);
+}
 
 /* ============================================================
    NAVBAR — Scroll behavior & Mobile toggle
@@ -2560,6 +2437,8 @@ input, select, button {
    CONTACT FORM — Basic validation & submit feedback
    ============================================================ */
 (function () {
+  // Replace this with the team inbox that should receive website inquiries.
+  const CONTACT_EMAIL = '';
   const submitBtn = document.getElementById('submitBtn');
   if (!submitBtn) return;
 
@@ -2595,7 +2474,7 @@ input, select, button {
       submitBtn.style.borderColor = 'rgba(192,57,43,0.5)';
 
       setTimeout(function () {
-        submitBtn.textContent = 'Submit Interest';
+        submitBtn.textContent = 'Send Message';
         submitBtn.style.background = '';
         submitBtn.style.color = '';
         submitBtn.style.borderColor = '';
@@ -2604,21 +2483,28 @@ input, select, button {
       return;
     }
 
-    // Simulate success
-    submitBtn.textContent = 'Submitting…';
-    submitBtn.disabled = true;
+    if (!CONTACT_EMAIL) {
+      submitBtn.textContent = 'Team email not configured';
+      submitBtn.style.background = 'transparent';
+      submitBtn.style.color = 'rgba(192,57,43,0.9)';
+      submitBtn.style.borderColor = 'rgba(192,57,43,0.5)';
+      return;
+    }
 
-    setTimeout(function () {
-      submitBtn.textContent = '✓ Thank You — We\'ll Be in Touch';
-      submitBtn.style.background = 'rgba(200,168,75,0.15)';
-      submitBtn.style.color = 'var(--accent)';
-      submitBtn.style.borderColor = 'var(--accent)';
+    const fullName = firstName.value.trim() + ' ' + lastName.value.trim();
+    const subject = 'DBF website inquiry: ' + interest.value;
+    const body = [
+      'Name: ' + fullName,
+      'Email: ' + email.value.trim(),
+      'Interest: ' + interest.value,
+      '',
+      'Please write your message here:'
+    ].join('\n');
 
-      // Clear form
-      fields.forEach(function (field) {
-        if (field) field.value = '';
-      });
-    }, 1200);
+    window.location.href =
+      'mailto:' + encodeURIComponent(CONTACT_EMAIL) +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
   });
 
   // Reset field border on focus

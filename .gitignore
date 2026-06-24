@@ -9,3 +9,10 @@ assets/videos/*.mp4
 # Local development tools
 MinGit.zip
 .tools/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example

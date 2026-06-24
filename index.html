@@ -138,6 +138,18 @@ input, select, textarea, button {
 }
 .text-link:hover { gap: 10px; }
 
+.competition-readmore {
+  background: rgba(255,255,255,0.72);
+  color: var(--black);
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.competition-readmore:hover {
+  background: rgba(255,255,255,0.86);
+}
+
 /* ---------- Buttons ---------- */
 .btn-primary {
   display: inline-flex;
@@ -389,7 +401,7 @@ input, select, textarea, button {
   max-width: 1240px;
   margin: 0 auto;
   width: 100%;
-  padding-top: var(--nav-h);
+  padding-top: calc(var(--nav-h) + 90px);
 }
 
 .hero-eyebrow {
@@ -1808,7 +1820,7 @@ input, select, textarea, button {
   .container { padding: 0 20px; }
   .nav-inner { padding: 0 20px; }
 
-  .hero-content { padding: 0 20px; padding-top: var(--nav-h); }
+  .hero-content { padding: 0 20px; padding-top: calc(var(--nav-h) + 32px); }
 
   .hero-title { font-size: 56px; }
   .hero-actions { flex-direction: column; }
@@ -2407,7 +2419,7 @@ body.team-modal-open {
         <div class="about-text competition-panel">
           <h2 class="section-heading"><em>The Competition</em></h2>
           <p>Every year, more than 145 universities from around the world compete for the top place at the American Institute of Aeronautics and Astronautics Design-Build-Fly competition. The goal is to design, build, and demonstrate the flight capabilities of an electric-powered, remote-controlled airplane that meets rigorous technical and mission requirements involving a commercial or military challenge.</p>
-          <a href="https://aiaa.org/dbf/" class="text-link" target="_blank" rel="noopener noreferrer">Read more about the competition here &rarr;</a>
+          <a href="https://aiaa.org/dbf/" class="text-link competition-readmore" target="_blank" rel="noopener noreferrer">Read more about the competition here &rarr;</a>
         </div>
       </div>
 
@@ -2689,7 +2701,7 @@ body.team-modal-open {
   <section id="sponsor-recognition" class="section sponsor-recognition">
     <div class="container">
       <div class="section-header centered">
-        <h2 class="section-heading">DBF UNC-Charlotte Sponsors</h2>
+        <h2 class="section-heading">THANK YOU TO ALL OUR SPONSORS WHO MAKE THIS PROJECT POSSIBLE.</h2>
       </div>
       <div class="sponsor-recognition-image">
         <img src="assets/images/sponsors.png" alt="DBF UNC-Charlotte sponsors" />

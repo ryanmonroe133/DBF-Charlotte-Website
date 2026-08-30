@@ -64,7 +64,7 @@ const server = http.createServer((req, res) => {
 
   const urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
   const safePath = path.normalize(urlPath).replace(/^(\.\.[/\\])+/, "");
-  const requested = safePath === "/" ? "index.html" : safePath.replace(/^[/\\]/, "");
+  const requested = safePath === "/" || safePath === "\\" ? "index.html" : safePath.replace(/^[/\\]/, "");
   const filePath = path.join(root, requested);
 
   if (!filePath.startsWith(root)) {

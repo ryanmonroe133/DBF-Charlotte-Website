@@ -24,6 +24,9 @@ Use these filenames if you want Codex to replace everything automatically:
 | Workshop banner | `workshop-banner.jpg` | Design Process wide banner |
 | Competition | `competition.jpg` | Competition section |
 | Runway footer | `runway-footer.jpg` | Bottom CTA image |
+| 2026-2027 team photo | `team photo.jpg` | Directly below the Meet Your 2026-2027 Team heading |
+| Team member headshot | `Firstname.jpg` or `Firstname.png` | Team member roster card |
+| Team member detail photo | `Firstname2.jpg` or `Firstname2.png` | Team member biography popup |
 
 ## Best Image Sizes
 
@@ -36,3 +39,5 @@ Use these filenames if you want Codex to replace everything automatically:
 - Use `.jpg`, `.jpeg`, `.png`, or `.webp`.
 - Avoid spaces in filenames.
 - If your files have different names, that is fine. Tell Codex the filenames and which slot each one should replace.
+- Team member cards currently use one image for the roster card and a second image in the biography popup.
+- HEIC headshots should be converted to `.jpg` for reliable browser support.

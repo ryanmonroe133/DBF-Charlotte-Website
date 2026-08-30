@@ -2129,17 +2129,20 @@ input, select, textarea, button {
   padding-top: 20px;
 }
 
-.current-team-photo {
+.team-photo {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  max-width: 960px;
+  aspect-ratio: 4243 / 3567;
+  margin: 0 auto 54px;
   overflow: hidden;
+  border: 1px solid rgba(163,162,118,0.28);
   background: var(--black);
 }
 
-.current-team-photo img {
+.team-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -2183,17 +2186,18 @@ input, select, textarea, button {
   object-position: center;
 }
 
-.team-title {
+.team-name {
   color: var(--gold);
   font-size: clamp(20px, 2vw, 30px);
   line-height: 1.08;
   margin-bottom: 4px;
 }
 
-.team-name {
+.team-role {
   color: var(--gold);
   font-size: 16px;
   line-height: 1.3;
+  min-height: 42px;
 }
 
 .team-read-more {
@@ -2204,7 +2208,7 @@ input, select, textarea, button {
   color: var(--gold);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
@@ -2268,6 +2272,15 @@ input, select, textarea, button {
   margin: -6px auto 0;
 }
 
+.team-detail-role {
+  color: var(--gold);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  margin: -14px auto 0;
+}
+
 .team-description {
   color: var(--gold);
   font-size: 15px;
@@ -2275,6 +2288,22 @@ input, select, textarea, button {
   align-self: start;
   max-width: 940px;
   margin: 0 auto;
+}
+
+.team-profile-facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  margin: -8px auto 0;
+}
+
+.team-description p + p {
+  margin-top: 14px;
 }
 
 .team-modal-close {
@@ -2331,10 +2360,23 @@ body.team-modal-open {
 @media (max-width: 1024px) {
   .sponsor-tiers { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .impact-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-detail {
+    grid-template-columns: 1fr;
+    width: min(calc(100vw - 56px), 860px);
+  }
 }
 
 @media (max-width: 600px) {
   .impact-grid { grid-template-columns: 1fr; }
+  .team-photo { margin-bottom: 42px; }
+  .team-grid { grid-template-columns: 1fr; gap: 42px; }
+  .team-role { min-height: 0; }
+  .team-detail {
+    width: calc(100vw - 40px);
+    padding: 22px;
+    text-align: center;
+  }
 }
 
 </style>
@@ -2457,14 +2499,17 @@ body.team-modal-open {
         <div class="section-header centered">
           <h2 class="section-heading">Meet Your 2026-2027 Team</h2>
         </div>
+        <figure class="team-photo">
+          <img src="assets/images/team%20photo.jpg" alt="DBF UNC-Charlotte 2026-2027 team outside Grigg Hall" />
+        </figure>
         <div class="team-grid">
           <article class="team-member">
             <button class="team-member-trigger" type="button" aria-expanded="false">
               <div class="team-headshot">
                 <img src="assets/images/Ryan.jpg" alt="Ryan Monroe" />
               </div>
-              <h3 class="team-title">Project Manager</h3>
-              <p class="team-name">Ryan Monroe</p>
+              <h3 class="team-name">Ryan Monroe</h3>
+              <p class="team-role">Project Lead and Avionics Lead</p>
             </button>
             <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
             <div class="team-detail">
@@ -2472,46 +2517,156 @@ body.team-modal-open {
               <div class="team-detail-photo">
                 <img src="assets/images/Ryan2.jpg" alt="Ryan Monroe working with aircraft" />
               </div>
-              <h3 class="team-detail-heading">Ryan Monroe - Project Manager</h3>
-              <p class="team-description">Ryan is a senior majoring in Mechanical Engineering Technology, concentrating in Electromechanical Systems. He has held a variety of roles in engineering, including working for Collins Aerospace as a Product Support Intern, working for the Autonomous Robots and Systems Laboratory (ARSL) at UNC-Charlotte as an Autonomous Surface Vessel field researcher, and has accumulated 200+ hours in aviation maintenance as an A&amp;P apprentice for AGL Aviation Services, primarily working on various Cessna and Mooney aircraft. Ryan has been involved with DBF UNC-Charlotte since its inception in 2025, and also serves as the AIAA UNC-Charlotte Student Chapter President.</p>
+              <h3 class="team-detail-heading">Ryan Monroe</h3>
+              <p class="team-detail-role">Project Lead and Avionics Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering Technology, Electromechanical Systems Concentration</span><span>Hobbies: flying drones and triathlons</span></p>
+              <div class="team-description">
+                <p>Ryan has held a variety of roles in engineering, including working for Collins Aerospace as a Product Support Intern, working for the Autonomous Robots and Systems Laboratory (ARSL) at UNC-Charlotte as an Autonomous Surface Vessel field researcher, and has accumulated 200+ hours in aviation maintenance as an A&amp;P apprentice for AGL Aviation Services, primarily working on various Cessna and Mooney aircraft.</p>
+                <p>Ryan has been involved with DBF UNC-Charlotte since its inception in 2025, and also serves as the AIAA UNC-Charlotte Student Branch President. Ryan recently completed United States Marine Corps Officer Candidate School in 2026 and plans to serve as an Aviation Maintenance Officer upon graduation from UNC-Charlotte.</p>
+              </div>
             </div>
           </article>
 
           <article class="team-member">
             <button class="team-member-trigger" type="button" aria-expanded="false">
               <div class="team-headshot">
-                <img src="assets/images/Paul.jpg" alt="Paul Travers" />
+                <img src="assets/images/Judd.jpg" alt="Judson Lovelace" />
               </div>
-              <h3 class="team-title">Aerodynamics</h3>
-              <p class="team-name">Paul Travers</p>
+              <h3 class="team-name">Judson Lovelace</h3>
+              <p class="team-role">Avionics</p>
             </button>
             <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
             <div class="team-detail">
               <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
               <div class="team-detail-photo">
-                <img src="assets/images/Paul2.png" alt="Paul Travers" />
+                <img src="assets/images/Judd2.jpg" alt="Judson Lovelace" />
               </div>
-              <h3 class="team-detail-heading">Paul Travers - Aerodynamics</h3>
-              <p class="team-description">Paul is a senior in Mechanical Engineering, concentrating in Aerospace Engineering. Paul has previously worked as an analyst evaluating BAM ceramics for Hypersonic and Spacecraft Applications for UNC-Charlotte's Office of Undergraduate Research.</p>
+              <h3 class="team-detail-heading">Judson Lovelace</h3>
+              <p class="team-detail-role">Avionics</p>
+              <p class="team-profile-facts"><span>Junior</span><span>Mechanical Engineering, Aerospace Engineering Concentration</span><span>Hobbies: running, vinyl records, model kits</span></p>
+              <div class="team-description">
+                <p>I have been fascinated by Mechanical Engineering ever since my late childhood and always wondered how something works, which further directed me toward the engineering industry. I have always loved being challenged with the tasks of designing and constructing projects by hand, such as making small mechanical projects and constructing small-scale models.</p>
+                <p>Growing up in Holly Springs, North Carolina, my love for math and problem-solving was very apparent. I always found myself drawn toward projects that included both logic and creativity. That passion has only grown stronger as I have entered into the world of Engineering. My academic journey has been driven by an obsession to be able to transform abstract ideas into workable, functional projects, particularly in Mechanical Engineering.</p>
+                <p>The more I continue to learn about engineering, the more I am eager to put the acquired skills to practical application. I will be more concerned with issues related to internships, collaborative projects, and networking opportunities with potential employers as a means of having hands-on experience in the fields of mechanical and aerospace engineering. I am excited to make contributions toward developing new technologies that further push the barriers of flight and engineering.</p>
+                <p>Judd is also the Vice President of the AIAA Student Branch at UNC-Charlotte.</p>
+              </div>
             </div>
           </article>
 
           <article class="team-member">
             <button class="team-member-trigger" type="button" aria-expanded="false">
               <div class="team-headshot">
-                <img src="assets/images/Abhinav.png" alt="Abhinav Das" />
+                <img src="assets/images/Abhinav.jpg" alt="Abhinav Das" />
               </div>
-              <h3 class="team-title">Chief Engineer /<br>Avionics &amp; Propulsion</h3>
-              <p class="team-name">Abhinav Das</p>
+              <h3 class="team-name">Abhinav Das</h3>
+              <p class="team-role">Chief Engineer and Propulsion Lead</p>
             </button>
             <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
             <div class="team-detail">
               <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
               <div class="team-detail-photo">
-                <img src="assets/images/Abhinav2.jpg" alt="Abhinav Das" />
+                <img src="assets/images/Abhinav3.png" alt="Abhinav Das" />
               </div>
-              <h3 class="team-detail-heading">Abhinav Das - Chief Engineer / Avionics and Propulsion</h3>
-              <p class="team-description">Abhinav is a senior in Mechanical Engineering, concentrating in Aerospace Engineering. Abhinav's recent work experience includes being a Siemens Energy Large Generators Design Intern. He was also awarded the 2026 AIAA Region II Conference First Place Award for his research on toroidal UAV propulsion systems.</p>
+              <h3 class="team-detail-heading">Abhinav Das</h3>
+              <p class="team-detail-role">Chief Engineer and Propulsion Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering, Aerospace Engineering Concentration and Minor in Mathematics</span></p>
+              <div class="team-description">
+                <p>Abhinav recently interned as a Design Engineering Intern with the Large Generators team at Siemens Energy. Before that he was improving product reliability while interning at Doosan Bobcat. He also brings to the team technical writing and research experience. He completed the NASA L'SPACE Proposal Writing and Evaluation Experience (NPWEE) program in 2026. His most recent research on stealth toroidal UAV propulsion earned him the 1st place undergraduate research award at the 2026 AIAA Region II Conference.</p>
+                <p>"Driven by a passion for structural design and complex problem solving, I am always eager to connect with fellow innovators and push engineering boundaries."</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Hoomon.jpg" alt="Hoomon Nikoei" />
+              </div>
+              <h3 class="team-name">Hoomon Nikoei</h3>
+              <p class="team-role">Propulsion</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Hoomon2.jpg" alt="Hoomon Nikoei" />
+              </div>
+              <h3 class="team-detail-heading">Hoomon Nikoei</h3>
+              <p class="team-detail-role">Propulsion</p>
+              <p class="team-profile-facts"><span>Sophomore</span><span>Mechanical Engineering, Aerospace Engineering Concentration</span></p>
+              <div class="team-description">
+                <p>Alongside my academic work, I have launched and operated multiple side ventures including e-commerce reselling and vehicle flipping, through which I developed skills in opportunity identification, operations management, and execution. My long-term goal is to combine a strong technical foundation with hands-on entrepreneurial experience to create manufacturing solutions within the automotive and aerospace industries.</p>
+                <p>One engineering project I've completed recently is STEM Tank with Central Piedmont Community College. For that, my team won 3rd place for developing a smart crosswalk safety system. For the system, I used motion sensors to detect pedestrians and activate embedded roadway warning lights for approaching drivers. I designed a vehicle monitoring concept using pre-positioned sensors to estimate approaching vehicles' speed and acceleration, triggering flashing warnings when a vehicle appeared not to be slowing appropriately. I built and demonstrated a working prototype. Our project was later presented at the NC Space Grant Event at NC State University.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Ethan.jpg" alt="Ethan Weiss" />
+              </div>
+              <h3 class="team-name">Ethan Weiss</h3>
+              <p class="team-role">Structures Lead</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Ethan2.jpg" alt="Ethan Weiss" />
+              </div>
+              <h3 class="team-detail-heading">Ethan Weiss</h3>
+              <p class="team-detail-role">Structures Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering</span></p>
+              <div class="team-description">
+                <p>Aerospace experience I bring to the team includes designing my own Star Wars X-Wing model in CAD. I conducted an aerodynamic study on the structural geometry to lower drag, and used the results to improve the aircraft wings and stabilizers. My future plans include joining the American Airlines Cadet Program and becoming a commercial pilot.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Owen.jpg" alt="Owen Armiger" />
+              </div>
+              <h3 class="team-name">Owen Armiger</h3>
+              <p class="team-role">Structures</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Owen2.jpg" alt="Owen Armiger" />
+              </div>
+              <h3 class="team-detail-heading">Owen Armiger</h3>
+              <p class="team-detail-role">Structures</p>
+              <p class="team-profile-facts"><span>Junior</span><span>Mechanical Engineering, Aerospace Engineering Concentration</span></p>
+              <div class="team-description">
+                <p>Aerospace experience I bring to the team includes creating a turbofan engine replica as a summer project in CAD. I'm also working towards my private pilot license (PPL) and have flown Cessnas.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Sandro1.jpg" alt="Sandro Galvan" />
+              </div>
+              <h3 class="team-name">Sandro Galvan</h3>
+              <p class="team-role">Fabrication Lead</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Sandro2.jpg" alt="Sandro Galvan" />
+              </div>
+              <h3 class="team-detail-heading">Sandro Galvan</h3>
+              <p class="team-detail-role">Fabrication Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering Technology</span></p>
+              <div class="team-description">
+                <p>Sandro brings to the team his experience from interning at Beta Technologies. There he has been working on manufacturing various composite components and operating tooling for their urban air mobility aircraft fleet. Outside of working in aerospace engineering, Sandro enjoys fencing for UNC-Charlotte's fencing club.</p>
+              </div>
             </div>
           </article>
 
@@ -2520,46 +2675,80 @@ body.team-modal-open {
               <div class="team-headshot">
                 <img src="assets/images/Mitch.png" alt="Mitch Reece" />
               </div>
-              <h3 class="team-title">Fabrication</h3>
-              <p class="team-name">Mitch Reece</p>
+              <h3 class="team-name">Mitch Reece</h3>
+              <p class="team-role">Fabrication</p>
             </button>
             <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
             <div class="team-detail">
               <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
               <div class="team-detail-photo">
-                <img src="assets/images/Mitch2.png" alt="Mitch Reece" />
+                <img src="assets/images/Mitch2.png" alt="Mitch Reece working on an aircraft" />
               </div>
-              <h3 class="team-detail-heading">Mitch Reece - Fabrication</h3>
-              <p class="team-description">Mitch is a junior in Mechanical Engineering. His previous work experience includes being a composites technician at Blue Force Technologies, now a subsidiary of Anduril.</p>
+              <h3 class="team-detail-heading">Mitch Reece</h3>
+              <p class="team-detail-role">Fabrication</p>
+              <p class="team-profile-facts"><span>Junior</span><span>Mechanical Engineering</span></p>
+              <div class="team-description">
+                <p>Mitch previously worked as an aerospace composites technician for multiple years at Anduril. There he worked on flight part fabrication and assembly, and tooling production and verification for various products. Mitch enjoys applying CAD design and 3D printing to his own RC aircraft projects.</p>
+                <p>"I love drones and all types of UAS; the challenges therein are like a puzzle to me."</p>
+              </div>
             </div>
           </article>
 
           <article class="team-member">
             <button class="team-member-trigger" type="button" aria-expanded="false">
               <div class="team-headshot">
-                <img src="assets/images/Sandro.jpg" alt="Sandro Galvan" />
+                <img src="assets/images/Paul.jpg" alt="Paul Travers" />
               </div>
-              <h3 class="team-title">Structures</h3>
-              <p class="team-name">Sandro Galvan</p>
+              <h3 class="team-name">Paul Travers</h3>
+              <p class="team-role">Aerodynamics Lead</p>
             </button>
             <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
             <div class="team-detail">
               <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
               <div class="team-detail-photo">
-                <img src="assets/images/Sandro2.jpg" alt="Sandro Galvan" />
+                <img src="assets/images/Paul2.png" alt="Paul Travers" />
               </div>
-              <h3 class="team-detail-heading">Sandro Galvan - Structures</h3>
-              <p class="team-description">Sandro is a senior in Mechanical Engineering Technology. He is currently an intern for Beta Technologies, working on various composite components and tooling for their urban air mobility aircraft fleet. Outside of working in aerospace engineering, Sandro enjoys fencing for UNC-Charlotte's fencing club.</p>
+              <h3 class="team-detail-heading">Paul Travers</h3>
+              <p class="team-detail-role">Aerodynamics Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering, Aerospace Engineering Concentration</span></p>
+              <div class="team-description">
+                <p>Paul has previously worked as an analyst evaluating BAM ceramics for Hypersonic and Spacecraft Applications for UNC-Charlotte's Office of Undergraduate Research. Other aerospace experience includes completing the NASA L'SPACE NPWEE program, where he engineered the Thermal Control System (TCS) for a simulated space mission to maintain critical components within strict operational temperature limits, collaborated with CAD and Systems Engineering tracks to resolve configuration conflicts and seamlessly integrate subsystems, and co-authored the thermal subsystem architecture and documentation for the Preliminary Design Review (PDR) according to NASA standards.</p>
+              </div>
             </div>
           </article>
 
           <article class="team-member">
             <button class="team-member-trigger" type="button" aria-expanded="false">
               <div class="team-headshot">
-                <img src="assets/images/Kynnedy.png" alt="Kynnedy Keel" />
+                <img src="assets/images/Esa.jpg" alt="Esa Tahtinen" />
               </div>
-              <h3 class="team-title">Payload</h3>
-              <p class="team-name">Kynnedy Keel</p>
+              <h3 class="team-name">Esa Tahtinen</h3>
+              <p class="team-role">Aerodynamics</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Esa2.jpg" alt="Esa Tahtinen" />
+              </div>
+              <h3 class="team-detail-heading">Esa Tahtinen</h3>
+              <p class="team-detail-role">Aerodynamics</p>
+              <p class="team-profile-facts"><span>Junior</span><span>Mechanical Engineering, Aerospace Engineering Concentration and Minor in Mathematics</span><span>Hobbies: running, hunting, design work</span></p>
+              <div class="team-description">
+                <p>I'm passionate about applying engineering principles to solve challenges in automotive and aerospace industries. I'm eager to develop my skills in areas like aerodynamics, vehicle design, and propulsion systems, and I'm always seeking opportunities to grow through internships, hands-on projects, or collaboration with others in the field. I look forward to connecting with professionals and peers who share my interest in advancing technology within the automotive and aerospace sectors.</p>
+                <p>My aerospace experience that I bring to the team includes working at Triangle North Executive Airport in Louisburg, North Carolina, for three months. While there, I assisted in an engine installation for an aircraft under supervision, gaining hands-on experience while collaborating with team members and maintaining a safe, organized work environment. This internship gave me a general understanding of airplane systems and operations.</p>
+                <p>Esa is also the Treasurer for the AIAA Student Branch at UNC-Charlotte.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Kynnedy.jpg" alt="Kynnedy Keel" />
+              </div>
+              <h3 class="team-name">Kynnedy Keel</h3>
+              <p class="team-role">Aircraft Performance Lead</p>
             </button>
             <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
             <div class="team-detail">
@@ -2567,8 +2756,58 @@ body.team-modal-open {
               <div class="team-detail-photo">
                 <img src="assets/images/Kynnedy2.jpg" alt="Kynnedy Keel" />
               </div>
-              <h3 class="team-detail-heading">Kynnedy Keel - Payload</h3>
-              <p class="team-description">Kynnedy is a senior in Mechanical Engineering, concentrating in Aerospace Engineering. She brings to the team her experience as an intern at NAVAIR working on hydraulic subsystems for the MV-22 Osprey.</p>
+              <h3 class="team-detail-heading">Kynnedy Keel</h3>
+              <p class="team-detail-role">Aircraft Performance Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering, Aerospace Engineering Concentration and Minor in Mathematics</span><span>Hobbies: reading, working out, movies/TV shows, and sports</span></p>
+              <div class="team-description">
+                <p>Kynnedy is a senior in Mechanical Engineering, concentrating in Aerospace Engineering. She brings to the team aerospace experience as a DoD SMART Scholar intern with NAVAIR, having worked on hydraulic subsystems for the MV-22 Osprey. She is also the secretary for the AIAA Student Branch at UNC-Charlotte.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Tim.jpg" alt="Tim Gladden" />
+              </div>
+              <h3 class="team-name">Tim Gladden</h3>
+              <p class="team-role">Payload Lead</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Tim2.jpg" alt="Tim Gladden" />
+              </div>
+              <h3 class="team-detail-heading">Tim Gladden</h3>
+              <p class="team-detail-role">Payload Lead</p>
+              <p class="team-profile-facts"><span>Senior</span><span>Mechanical Engineering Technology</span></p>
+              <div class="team-description">
+                <p>Tim has worked as a Manufacturing Engineer Intern at Legrand for a year and a half, working on updates to active assembly lines and large injection mold machines. Apart from that experience, he now works as a bike mechanic at a nonprofit bike shop in the Charlotte area. In his downtime, Tim enjoys working with leather, making costumes and hand-sewn goods. He enjoys working with his hands and is excited to bring his experience to the team.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-member">
+            <button class="team-member-trigger" type="button" aria-expanded="false">
+              <div class="team-headshot">
+                <img src="assets/images/Roshan.jpg" alt="Roshan Shoukat" />
+              </div>
+              <h3 class="team-name">Roshan Shoukat</h3>
+              <p class="team-role">Business Relations</p>
+            </button>
+            <button class="team-read-more" type="button" aria-expanded="false">Read More</button>
+            <div class="team-detail">
+              <button class="team-modal-close" type="button" aria-label="Close profile">X</button>
+              <div class="team-detail-photo">
+                <img src="assets/images/Roshan2.jpg" alt="Roshan Shoukat" />
+              </div>
+              <h3 class="team-detail-heading">Roshan Shoukat</h3>
+              <p class="team-detail-role">Business Relations</p>
+              <p class="team-profile-facts"><span>Sophomore</span><span>Finance and Accounting</span></p>
+              <div class="team-description">
+                <p>Roshan has served as a Regulatory Compliance Intern at Charlotte Douglas International Airport, where he supported oversight of federally funded construction projects and ensured project compliance with FAA requirements.</p>
+              </div>
             </div>
           </article>
         </div>
